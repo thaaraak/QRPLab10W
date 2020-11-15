@@ -66,10 +66,19 @@ max_freq = int(1 / nyquist_rate / 1000000)
 mag, re, im = calc_dft( voltage )
 freq = np.linspace(0, max_freq, numpts+1)
 
+inbuilt_fft = fft(voltage)
+
+
+
 plt.figure(1)
 plt.xlabel("Frequency (MHz)" )
 plt.ylabel("log10(Mag)" )
 plt.semilogy( freq, mag )
+
+plt.figure(3)
+plt.xlabel("Frequency (MHz)" )
+plt.ylabel("log10(Mag)" )
+plt.semilogy( freq, np.abs(inbuilt_fft[0:numpts+1]) )
 
 plt.figure(2)
 plt.xlabel("Time" )
