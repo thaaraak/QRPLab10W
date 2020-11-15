@@ -14,12 +14,13 @@ def calc_dft( sig ):
     mag = [0.0] * dft_len
 
     for k in range(0, dft_len):
+        
         for i in range(0,sig_len):
             re[k] += sig[i]*math.cos( 2*math.pi*k*i / sig_len)
             im[k] -= sig[i]*math.sin( 2*math.pi*k*i / sig_len)
-        
-    for k in range(0,dft_len):
+
         mag[k] = math.sqrt( re[k]**2 + im[k]**2 )    
+
     return mag, re, im
 
 
