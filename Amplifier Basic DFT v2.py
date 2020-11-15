@@ -52,7 +52,7 @@ def readcsv( inpfile ):
 
 time, voltage = readcsv( "data/SDS00019.csv" )
 time, voltage = readcsv( "data/12.9-3V-lpf.csv" )
-time, voltage = readcsv( "data/SDS00024.csv" )
+time, voltage = readcsv( "data/SDS00026.csv" )
   
 #mag, re, im = calc_dft( sigs.ecg_signal )
 
