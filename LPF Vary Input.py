@@ -36,10 +36,10 @@ def readcsv( inpfile ):
 
     return time, voltage            
 
-time3V, voltage3V = readcsv( "12.9-3V-lpf.csv" )
-time4V, voltage4V = readcsv( "12.9-4V-lpf.csv" )
-time5V, voltage5V = readcsv( "12.9-5V-lpf.csv" )
-time6V, voltage6V = readcsv( "12.9-6V-lpf.csv" )
+time3V, voltage3V = readcsv( "data/12.9-3V-lpf.csv" )
+time4V, voltage4V = readcsv( "data/12.9-4V-lpf.csv" )
+time5V, voltage5V = readcsv( "data/12.9-5V-lpf.csv" )
+time6V, voltage6V = readcsv( "data/12.9-6V-lpf.csv" )
 
 """
 rms = np.sqrt(np.mean(np.square(voltage3V)))

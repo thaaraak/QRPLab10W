@@ -36,10 +36,10 @@ def readcsv( inpfile ):
 
     return time, voltage            
 
-time3V, voltage3V = readcsv( "SDS00019.csv" )
-time4V, voltage4V = readcsv( "SDS00020.csv" )
-time5V, voltage5V = readcsv( "SDS00021.csv" )
-time6V, voltage6V = readcsv( "SDS00022.csv" )
+time3V, voltage3V = readcsv( "data/SDS00019.csv" )
+time4V, voltage4V = readcsv( "data/SDS00020.csv" )
+time5V, voltage5V = readcsv( "data/SDS00021.csv" )
+time6V, voltage6V = readcsv( "data/SDS00022.csv" )
 
 rms = np.sqrt(np.mean(np.square(voltage3V)))
 peak = np.max(voltage3V)
@@ -47,6 +47,8 @@ minpeak = np.min(voltage3V)
 
 pwr_truerms = rms*rms/50
 pwr_peakpeak = ((peak-minpeak)/2)**2/100
+
+fig= plt.figure(figsize=(18,16))
 
 plt.subplot(2, 1, 1)
 plt.xlabel("Time" )
@@ -59,10 +61,10 @@ plt.plot(time6V, voltage6V, label="6V")
 #plt.legend()
 #plt.show()
 
-time3V, voltage3V = readcsv( "12.9V-3V-Input" )
-time4V, voltage4V = readcsv( "12.9V-4V-Input" )
-time5V, voltage5V = readcsv( "12.9V-5V-Input" )
-time6V, voltage6V = readcsv( "12.9V-6V-Input" )
+time3V, voltage3V = readcsv( "data/12.9V-3V-Input" )
+time4V, voltage4V = readcsv( "data/12.9V-4V-Input" )
+time5V, voltage5V = readcsv( "data/12.9V-5V-Input" )
+time6V, voltage6V = readcsv( "data/12.9V-6V-Input" )
 
 rms = np.sqrt(np.mean(np.square(voltage3V)))
 peak = np.max(voltage3V)
