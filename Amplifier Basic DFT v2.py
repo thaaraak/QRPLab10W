@@ -52,7 +52,7 @@ def readcsv( inpfile ):
 
 time, voltage = readcsv( "data/SDS00019.csv" )
 time, voltage = readcsv( "data/12.9-3V-lpf.csv" )
-time, voltage = readcsv( "data/SDS00026.csv" )
+time, voltage = readcsv( "data/SDS00028.csv" )
   
 #mag, re, im = calc_dft( sigs.ecg_signal )
 
@@ -63,22 +63,30 @@ nyquist_rate = 2 * sample_rate
 hz_per_point = 1 / ( nyquist_rate * numpts )
 max_freq = int(1 / nyquist_rate / 1000000)
 
+#voltage = np.divide( np.power( voltage, 2 ), 100 )
 mag, re, im = calc_dft( voltage )
 freq = np.linspace(0, max_freq, numpts+1)
 
-inbuilt_fft = fft(voltage)
+#inbuilt_fft = fft(voltage)
 
+mag = np.divide(mag, numpts)
+mag = np.divide( np.power( mag, 2 ), 100 )
+mag = np.multiply( np.log10( mag ), 10 )
 
+# Add -50db for attenuator + 30 to convert to dBm = -20
+mag = np.add( mag, -20 )
 
 plt.figure(1)
 plt.xlabel("Frequency (MHz)" )
-plt.ylabel("log10(Mag)" )
-plt.semilogy( freq, mag )
+plt.ylabel("Power (dBm)" )
+plt.plot( freq, mag )
 
+"""
 plt.figure(3)
 plt.xlabel("Frequency (MHz)" )
 plt.ylabel("log10(Mag)" )
 plt.semilogy( freq, np.abs(inbuilt_fft[0:numpts+1]) )
+"""
 
 plt.figure(2)
 plt.xlabel("Time" )
