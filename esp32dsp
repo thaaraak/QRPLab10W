@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu May 27 13:37:05 2021
+
+@author: xenir
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+import sigs as sigs
+
+src = sigs.src_signal
+dest = sigs.dest_signal
+
+plt.plot(src)
+plt.plot(dest)
+plt.show()

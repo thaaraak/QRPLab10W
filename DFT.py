@@ -27,10 +27,22 @@ def calc_dft( sig ):
 #sig1 = [ 0.3*math.sin( 2*math.pi*i/13) + math.sin(2*math.pi*i/94) for i in range(0,1000)]
 #plt.plot(sig1)
 
-sampling_rate = 2000
+sampling_rate = 1000
 nyq_freq = sampling_rate / 2
 
 t = np.linspace(0, 1, sampling_rate)
+
+
+
+numpts = int(len(t)/2)
+sample_rate = t[1] - t[0]
+sample_frequency = 1 / sample_rate
+
+nyquist_rate = 2 * sample_rate
+max_freq = int(1 / nyquist_rate)
+freq = np.linspace(0, max_freq, numpts+1)
+
+
 
 sig_5hz = np.sin( 2*np.pi*5*t )
 sig_7hz = np.sin( 2*np.pi*7*t )
@@ -38,11 +50,16 @@ sig_30hz = np.sin( 2*np.pi*30*t )
 sig_50hz = np.sin( 2*np.pi*50*t )
 sig_250hz = np.sin( 2*np.pi*250*t )
 
-sig = sig_250hz #* sig_250hz
+sig = sig_50hz
   
 #mag, re, im = calc_dft( sigs.ecg_signal )
 mag, re, im = calc_dft( sig )
-
+plt.figure(1)
+plt.xlabel("Frequency (Hz)" )
+plt.ylabel("Mag" )
+plt.plot( freq, mag )
+plt.show()
+"""
 f,plt_arr = plt.subplots(4, sharex=True)
 f.suptitle( 'DFT' )
 
@@ -54,3 +71,4 @@ plt_arr[2].plot( im, color='blue')
 plt_arr[2].set_title('Imaginary')
 plt_arr[3].plot( mag, color='purple')
 plt_arr[3].set_title('Magnitude')
+"""
