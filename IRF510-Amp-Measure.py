@@ -134,7 +134,7 @@ plt.ylabel("Amplitude" )
 plt.plot( audio_samples )
 
 plt.figure(3)
-plt.xlabel("Frequency (MHz)" )
+plt.xlabel("Frequency (Hz)" )
 plt.ylabel("Power (dBm)" )
 plt.plot( freq[1:], mag[1:] )
 
